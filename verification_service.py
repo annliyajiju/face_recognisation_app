@@ -1,15 +1,20 @@
 from detector import FaceDetector
 from embedder import FaceEmbedder
 from comparator import FaceComparator
+from image_quality import ImageQuality
 
 class FaceVerificationService:
 
     def __init__(self):
         self.detector = FaceDetector()
+        self.image_quality = ImageQuality()
         self.embedder = FaceEmbedder()
         self.comparator = FaceComparator()
     def verify_faces(self, image_path1, image_path2, threshold=0.6):
         try:
+            self.image_quality.check_quality(image_path1)
+            self.image_quality.check_quality(image_path2)
+            
             face1 = self.detector.detect_face(image_path1)
             face2 = self.detector.detect_face(image_path2)
 
