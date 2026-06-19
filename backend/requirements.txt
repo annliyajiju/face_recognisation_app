@@ -3,4 +3,5 @@ uvicorn
 python-multipart
 opencv-python
 numpy
-insightFace buffalo_l
+insightFace 
+onnxruntime
